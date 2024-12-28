@@ -2,3 +2,4 @@
 /.idea/
 *.log
 /vscode/
+.DS_Store
