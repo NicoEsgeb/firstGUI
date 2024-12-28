@@ -19,8 +19,12 @@ public class GUI implements ActionListener {
     private JPanel panel;
     //--Declaration of label object globaly and privatly
     private JLabel label;
+    //--Dreclaration of buttons
+    private JButton button;
+    private JButton button2;
     //--Declaration Button Count variable
     private int buttonCount = 0;
+
     //----- This method set all the components of the GUI -----
     public GUI(){
         //--This frame object will hold all the components
@@ -50,11 +54,20 @@ public class GUI implements ActionListener {
 
         //--------Create and add Button to Panel---------
         //--Button Creation
-        JButton Button = new JButton("The button");
+        button = new JButton("Add one Click");
         //--Adding action to the button
-        Button.addActionListener((this));
+        button.addActionListener((this));
         //--Adding button to panel
-        panel.add(Button);
+        panel.add(button);
+
+        //--------Create and add Second Button to Panel---------
+        //--Button creation
+        button2 = new JButton("Delete one click");
+        //--Adding action button 
+        button2.addActionListener((this));
+        //--Adding button to panel
+        panel.add(button2);
+
 
         //--------Creation and addition of label----------
         //--Creation of label
@@ -75,10 +88,14 @@ public class GUI implements ActionListener {
     @Override
     //--Definition of actionListener method
     public void actionPerformed(ActionEvent e){
-        //Update buttonCount with each click
-        buttonCount++;
-        //Update label text
-        label.setText("Number of clicks: " + buttonCount);
+        //------Different action conditions------
+        //--Update buttonCount with each click
+        if (e.getSource() == button) {
+            buttonCount++;
+            label.setText("Number of clicks: " + buttonCount);
+        } else if (e.getSource() == button2) {
+            buttonCount--;
+            label.setText("Number of clicks: " + buttonCount);
+        }
     }
 }
-
